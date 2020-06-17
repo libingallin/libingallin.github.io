@@ -1,3 +1,3 @@
 # Welcome to GitHub Pages
 
-- [TensorFlow Guide](tensorflow_guide)
+- [TensorFlow Guide](docs/tensorflow_guide)
