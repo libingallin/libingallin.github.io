@@ -2,4 +2,4 @@
 
 - [TensorFlow Guide](docs/tensorflow_guide)
 
-- [utils](utils)
+- [utils](docs/utils)
