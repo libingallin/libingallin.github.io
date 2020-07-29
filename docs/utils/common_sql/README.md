@@ -6,3 +6,10 @@ SELECT type, count(*)
 FROM table
 GROUP BY type
 ```
+
+## 2. 使用中文 alias
+
+```sql
+SELECT aa AS `中文名`
+FROM table
+```
