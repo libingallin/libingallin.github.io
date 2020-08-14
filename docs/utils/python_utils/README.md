@@ -224,7 +224,7 @@ def Q2B(uchar):
 
 ```python
 data['year'] = data['date'].dt.year
-tmp_months = data['pick_up_car_date'].dt.month
+tmp_months = data['date'].dt.month
 data['month'] = [str(x).zfill(2) for x in tmp_months]
 data['year_month'] = (data['year'].astype(str)
                       + '_'
