@@ -232,3 +232,18 @@ data['year_month'] = (data['year'].astype(str)
 data.drop(columns=['year', 'month'], inplace=True)
 ```
 这样出来的结果是 `2020_09`，而不是 `2020_9`。
+
+## 12. `pd.concat` 可能会遇到的问题
+
+```python
+for loop:
+    ...
+    a = xxxx   # pd.DataFrame
+    a.reset_index(drop=True, inplace=True) 
+
+    b = yyyy   # pd.DataFrame
+    b.reset_index(drop=True, inplace=True)
+
+    # pd.concat 之前必须要 reset_index
+    a_b = pd.concat([a, b], axis=1)
+```
