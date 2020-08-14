@@ -217,3 +217,18 @@ def Q2B(uchar):
         return uchar
     return chr(inside_code)
 ```
+
+## 11. 提取年-月信息
+
+假设 dataframe 中的 date 列是 datetime64[ns] 类型，提前其中的年月信息，可以这样
+
+```python
+data['year'] = data['date'].dt.year
+tmp_months = data['pick_up_car_date'].dt.month
+data['month'] = [str(x).zfill(2) for x in tmp_months]
+data['year_month'] = (data['year'].astype(str)
+                      + '_'
+                      + data['month'])
+data.drop(columns=['year', 'month'], inplace=True)
+```
+这样出来的结果是 `2020_09`，而不是 `2020_9`。
