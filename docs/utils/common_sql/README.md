@@ -19,10 +19,55 @@ FROM table
 ```sql
 SELECT id,
        col
-FROM (SELECT id,
-             col,
-             row_number() over(partition BY col ORDER BY time DESC) AS rank
-      FROM db.table
-      WHERE xxx) AS t
+FROM
+  (SELECT id,
+          col,
+          row_number() over(partition BY col ORDER BY time DESC) AS rank
+   FROM db.table
+   ...) AS t
 WHERE t.rank = 1
+...
+```
+
+## 4. `WITH.. AS` 语句
+
+```sql
+WITH alias_1 AS (
+  SELECT xx,
+         yy,
+         zz
+  FROM table_1
+  ...
+)
+SELECT * FROM alias_1
+```
+
+Or
+
+```WITH
+WITH alias_1 AS (
+  SELECT xx,
+         yy,
+         zz
+  FROM table_1
+  ...
+),
+alias_2 AS (
+  SELECT xxx,
+         yyy,
+         zzz
+  FROM table_2
+  ...
+)
+SELECT * FROM alias_1
+LEFT JOIN alias_2 ON alias_1.xx = alias_2.xxx
+```
+
+## 5. 正则表达式
+```
+SELECT xxx,
+       yyy,
+       IF(zzz REGEXP '[买断|拍卖|公务车|车商回购|法律诉讼]', 1, 0) AS zzz_2
+FROM table
+...
 ```
