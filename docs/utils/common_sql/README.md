@@ -44,7 +44,7 @@ SELECT * FROM alias_1
 
 Or
 
-```WITH
+```sql
 WITH alias_1 AS (
   SELECT xx,
          yy,
@@ -64,7 +64,7 @@ LEFT JOIN alias_2 ON alias_1.xx = alias_2.xxx
 ```
 
 ## 5. 正则表达式
-```
+```sql
 SELECT xxx,
        yyy,
        IF(zzz REGEXP '[买断|拍卖|公务车|车商回购|法律诉讼]', 1, 0) AS zzz_2
