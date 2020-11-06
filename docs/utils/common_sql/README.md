@@ -67,7 +67,8 @@ LEFT JOIN alias_2 ON alias_1.xx = alias_2.xxx
 ```sql
 SELECT xxx,
        yyy,
-       IF(zzz REGEXP '[买断|拍卖|公务车|车商回购|法律诉讼]', 1, 0) AS zzz_2
+       -- zzz 中是否含有「拍卖」或者「竞拍」或者「流拍」
+       IF(zzz REGEXP '[拍卖|竞拍|流拍]', 1, 0) AS zzz_2
 FROM table
 ...
 ```
