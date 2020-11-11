@@ -267,18 +267,18 @@ def check_vin(vin: str) -> bool:
         'S': 2, 'T': 3, 'U': 4, 'V': 5, 'W': 6, 'X': 7, 'Y': 8, 'Z': 9, '0': 0,
         '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9
     }
-    # vin中每个位置的权重
-    weights = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2]
-
     values = [mapping.get(v, 100) for v in vin]
     if 100 in values:  # 防止未知字符出现在vin中
         return False
+    
+    # vin中每个位置的权重
+    weights = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2]
 
     check_sum = sum([v * w for v, w in zip(values, weights)])
     check_value = check_sum % 11
 
-    v_8th = vin[8]
-    if str(check_value) == v_8th or (check_value == 10 and v_8th == 'X'):
+    v_9th = vin[8]
+    if (str(check_value) == v_9th) or (check_value == 10 and v_9th == 'X'):
         return True
     else:
         return False
